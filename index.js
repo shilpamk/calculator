@@ -1,6 +1,7 @@
 const readline = require('readline-sync');
 
-console.log('Welcome to the calculator!');
+
+console.log('Welcome to the Calculator!');
 console.log('===========================\n');
 
 console.log('Please enter the operator');
@@ -11,22 +12,22 @@ let opCount = 0;
 
 while(true) {
     console.log('Please enter the operand');
-    numArr.push(+(readline.prompt()));
+    let userInput = +(readline.prompt());
+    if (isNaN(userInput)) {
+        console.log('Please enter only numbers.\n');
+        continue;
+    }
+    numArr.push(userInput);
     opCount++;
     console.log('DO you want to add more operands? y/n')
     let response = readline.prompt();
     if(response === 'n') {
         break;
+    } else if(response !== 'y') {
+        console.log('Please enter only - y or n');
     }
 }
 
-
-
-
-for(let i = 0; i < opCount; i++) {
-    console.log(`Enter the operand ${i+1}: `);
-    
-}
 
 console.log(numArr);
 
@@ -39,8 +40,8 @@ console.log(numArr);
  }
 
  function subtraction(arr) {
-    let sub = 0;
-    for(let i  = 0; i < opCount; i++) {
+    let sub = arr[0];
+    for(let i = 1; i < opCount; i++) {
         sub -= arr[i];       
     }
     return sub;
@@ -80,20 +81,3 @@ switch(operator) {
         console.log('All done!');
         break;
 }
-// console.log('Enter the first number: ');
-// let firstNum = +(readline.prompt());
-// console.log('Enter the second number');
-// let secondNum = +(readline.prompt());
-// console.log(firstNum + secondNum);
-
-// switch(operator) {
-//     case '+':
-//         console.log(`Addition: ${firstNum +secondNum}`);
-//         break;
-//     case '-':
-//         console.log(`Subtraction: ${firstNum - secondNum}`);
-//         break;
-//     default:
-//         console.log('No result');
-//         break;
-// }
