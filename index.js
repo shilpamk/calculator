@@ -6,14 +6,26 @@ console.log('===========================\n');
 console.log('Please enter the operator');
 let operator = readline.prompt();
 
-console.log('Enter the number of operands you want to enter?');
-let opCount = +(readline.prompt()); // operand count
-
 let numArr = [];
+let opCount = 0;
+
+while(true) {
+    console.log('Please enter the operand');
+    numArr.push(+(readline.prompt()));
+    opCount++;
+    console.log('DO you want to add more operands? y/n')
+    let response = readline.prompt();
+    if(response === 'n') {
+        break;
+    }
+}
+
+
+
 
 for(let i = 0; i < opCount; i++) {
     console.log(`Enter the operand ${i+1}: `);
-    numArr.push(+(readline.prompt()));
+    
 }
 
 console.log(numArr);
